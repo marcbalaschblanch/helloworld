@@ -1,0 +1,14 @@
+[
+    {
+        "question":"Em dóna error al compilar el programa.",
+        "answer":"Usualment els 'scanf' dónen molts problemes, mira que el codi estigui ben escrit tal i com està a la documentació."
+    },
+    {
+        "question":"Té limit de caràcters el nom que puc escriure?",
+        "answer":"En aquest cas el limit està a 80 caràcters. Si en alguna situació no li vols posar cap limit només hauràs de cambiar la línia 'char[80] name' per 'char* name'."
+    },
+    {
+        "question":"Estic en Mac i no puc crear cap projecte.",
+        "answer":"En usuaris de Mac el Qt Creator no té la capacitat de compilar programes. En aquest cas hauràs de buscar com utilitzar Qt Creator en un Mac o usar un ordinador Windows."
+    }
+]

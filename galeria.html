@@ -25,7 +25,24 @@
                 </ul>
             </nav>
             <main>
-                <img src="images/4.PNG" alt="Imatge del resultat" width="80%" class="center">
+                <div class="slideshow-container">
+                    <button class="prev"><</button>
+                    <div class="mySlides">
+                        <img src="images/1.PNG" alt="Imatge del resultat" width="80%" class="center">
+                    </div>
+                    <div class="mySlides">
+                        <img src="images/2.PNG" alt="Imatge del resultat" width="80%" class="center">
+                    </div>
+                    <div class="mySlides">
+                        <img src="images/3.PNG" alt="Imatge del resultat" width="80%" class="center">
+                    </div>
+                    <div class="mySlides">
+                        <img src="images/4.PNG" alt="Imatge del resultat" width="80%" class="center">
+                    </div>
+                
+                <button class="next">></button>
+                </div>
+                
             </main>
             
         </section>
@@ -33,7 +50,34 @@
             &copy; 2021 - Marc Balasch Blanch
         </footer>
     </section>
-<script src="functions.js"></script>
+<script>
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+}
+
+document.getElementsByClassName("prev")[0].onclick = function(){plusSlides(-1)};
+document.getElementsByClassName("next")[0].onclick = function(){plusSlides(1)};
+</script>
 </body>
 
 </html>
