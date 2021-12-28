@@ -2,7 +2,7 @@
     {
     "title": "Pàgina 1",
     "text": "Aquí va informació sobre la pàgina web o llibre en qüestió.",
-    "img_source": "/images/1.PNG",
+    "img_source": "images/1.PNG",
     "img_alt": "Crear un projecte a Qt Creator amb el botó 'New Project'."
     }
 ]
