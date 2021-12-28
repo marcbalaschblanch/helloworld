@@ -1,0 +1,159 @@
+body{
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/*Container*/
+section.container{
+    width: 80%;
+    max-width: 1600px;
+    min-width: 1200px;
+    background-color: whitesmoke;
+    margin: 0px auto;
+    border: solid gray 1px;
+    border-radius: 8px;
+}
+/*Menu*/
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+  }
+  .menu ul li{
+      float: left;
+  }
+.menu ul li a{
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 16px;
+    color: white;
+    transition: all ease 0.5s;
+}
+nav ul li a:hover{
+    color: tomato;
+    background-color: #5a5a5a;
+
+}
+/*Title*/
+h1{
+    text-align: center;
+}
+/*Main*/
+main{
+    margin: 20px;
+    border: solid black 1px;
+    border-radius: 4px;
+    padding: 10px;
+}
+.center{
+    display: block;
+    margin: 0px auto;
+}
+/*Articles*/
+article{
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 20px;
+}
+p{
+    font-size: 0.9em;
+}
+article .image{
+    position: relative;
+    transition: all ease 1s;
+}
+article .image:hover{
+    transform: scale(1.5);
+    z-index: 1;
+}
+article div{
+    width: 50%;
+}
+article .content{
+    margin: 1%;
+}
+article .content h2{
+    border-bottom: solid black 1px;
+}
+article .content p{
+    margin: 5px;
+}
+.even .content{
+    order: 2;
+    text-align: end;
+}
+.even .image{
+    order: 1;
+    transform-origin: top left;
+}
+.odd .content{
+    order: 1;
+}
+.odd .image{
+    order: 2;
+    transform-origin: top right;
+}
+/*Slideshow*/
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    height: 500px;
+  }
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 8px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 3px;
+    user-select: none;
+  }
+  .next {
+    right: 0;
+  }
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+  }
+  .mySlides {
+    display: none;
+  }
+/*Preguntes*/
+ul.even{
+list-style-type: circle;
+font-size: 0.9em;
+}
+ul.odd{
+    list-style-type:disc;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 30px;
+}
+/*footer*/
+footer{
+    margin-top: 120px;
+    padding: 10px;
+    font-size: small;
+    text-align: center;
+    background-color: grey;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+@media only screen and (max-width: 600px){
+    section.container{
+        width: 100%;
+        max-width: none;
+        min-width: none;
+    }
+    .menu ul li{
+    width: 100%;
+    }
+}

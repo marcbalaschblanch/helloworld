@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Marc Balasch : Bibliografia</title>
+</head>
+
+<body>
+    <section class="container">
+        <header>
+            <h1>Llenguatge C: Interaccions mitjançant la consola</h1>
+        </header>
+        <section>
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.html">Presentació</a></li>
+                    <li><a href="contingut.html">Contingut</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="p_comuns.html">Problemes comuns</a></li>
+                    <li><a href="bibliografia.html">Bibliografia</a></li>
+                </ul>
+            </nav>
+            <main>
+                
+            </main>
+
+        </section>
+        <footer>
+            &copy; 2021 - Marc Balasch Blanch
+        </footer>
+    </section>
+    <script >
+        function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
+window.onload = function(){
+    var data;
+
+    readTextFile("http://localhost:5500/biblio.json", function(text){
+        data = JSON.parse(text);
+        const mainElement = document.querySelectorAll("main")[0];
+        for(var i = 0; i<data.length; i++){
+            var newArticle = document.createElement("article");
+            var newH2 = document.createElement("h2");
+            var newP = document.createElement("p");
+            var newImg = document.createElement("img");
+            var newDivContent = document.createElement("div");
+            var newDivImg = document.createElement("div");
+
+            if((i+1) % 2 == 0){
+                newArticle.className = "even";
+            }else{
+                newArticle.className = "odd";
+            }
+
+            newDivContent.className = "content";
+            newDivImg.className = "image";
+
+            var textH2 = document.createTextNode(data[i].title);
+            var textP = document.createTextNode(data[i].text);
+
+            newH2.appendChild(textH2);
+            newP.appendChild(textP);
+            newDivContent.appendChild(newH2);
+            newDivContent.appendChild(newP);
+
+            newImg.src = data[i].img_source;
+            newImg.alt = data[i].img_alt;
+            newImg.style.width = "100%";
+            newDivImg.appendChild(newImg);
+
+            newArticle.appendChild(newDivContent);
+            newArticle.appendChild(newDivImg);
+            mainElement.appendChild(newArticle);
+        }
+
+    });
+}
+    </script>
+</body>
+
+</html>
