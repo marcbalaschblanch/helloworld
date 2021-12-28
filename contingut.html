@@ -24,43 +24,8 @@
                     <li><a href="bibliografia.html">Bibliografia</a></li>
                 </ul>
             </nav>
-            <main>
-                <article>
-                    <div class="content">
-                        <h2>Pas 1</h2>
-                        <p>Creem un nou projecte al Qt Creator.</p>
-                    </div>
-                    <div class="image">
-                        <img src="images/1.PNG" alt="Crear un projecte a Qt Creator amb el botó 'New Project'." width="100%">
-                    </div>
-                </article>
-                <article>
-                    <div class="content">
-                        <h2>Pas 2</h2>
-                        <p>Sel·leccionem la opció "Plain C Application".</p>
-                    </div>
-                    <div class="image">
-                        <img src="images/2.PNG" alt="Sel·leccionar la opció 'Plain C Application'." width="100%">
-                    </div>
-                </article>
-                <article>
-                    <div class="content">
-                        <h2>Pas 3</h2>
-                        <p>Cliquem "next" fins que ens surti aquesta pantalla negra. Seguidament escrivim el codi de la foto.</p>
-                    </div>
-                    <div class="image">
-                        <img src="images/3.PNG" alt="Escriure el codi de la foto" width="100%">
-                    </div>
-                </article>
-                <article>
-                    <div class="content">
-                        <h2>Pas 4</h2>
-                        <p>Una vegada cliquem el botó de "build and run" abaix de la pantalla a l'esquerra (o Ctrl+R), se'ns obrirà aquesta pantalla on ens preguntarà el nom i l'imprimirà.</p>
-                    </div>
-                    <div class="image">
-                        <img src="images/4.PNG" alt="Resultat final" width="100%">
-                    </div>
-                </article>
+            <main id="content">
+                
             </main>
 
         </section>
@@ -68,7 +33,66 @@
             &copy; 2021 - Marc Balasch Blanch
         </footer>
     </section>
-    <script src="functions.js"></script>
+    <script>
+        function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
+window.onload = function(){
+    var data;
+
+    readTextFile("http://localhost:5500/steps.json", function(text){
+        data = JSON.parse(text);
+        const mainElement = document.querySelectorAll("main")[0];
+        for(var i = 0; i<data.length; i++){
+            var newArticle = document.createElement("article");
+            var newH2 = document.createElement("h2");
+            var newP = document.createElement("p");
+            var newImg = document.createElement("img");
+            var newDivContent = document.createElement("div");
+            var newDivImg = document.createElement("div");
+
+            if((i+1) % 2 == 0){
+                newArticle.className = "even";
+            }else{
+                newArticle.className = "odd";
+            }
+
+            newDivContent.className = "content";
+            newDivImg.className = "image";
+
+            var textH2 = document.createTextNode(data[i].title);
+            var textP = document.createTextNode(data[i].text);
+
+            newH2.appendChild(textH2);
+            newP.appendChild(textP);
+            newDivContent.appendChild(newH2);
+            newDivContent.appendChild(newP);
+
+            newImg.src = data[i].img_source;
+            newImg.alt = data[i].img_alt;
+            newImg.style.width = "100%";
+            newDivImg.appendChild(newImg);
+
+            newArticle.appendChild(newDivContent);
+            newArticle.appendChild(newDivImg);
+            mainElement.appendChild(newArticle);
+        }
+    
+    });
+    
+
+
+}
+    </script>
 </body>
 
 </html>
